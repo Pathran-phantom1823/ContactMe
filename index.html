@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Russlle De Explorer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper-box">
+        <div class="container">
+            <h2 class="text-center mb-5">Contact ME! & Let's Explore Together</h2>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="fullname">Full Name*</label>
+                            <input type="text" class="form-control" name="Fullname" id="name" required/>
+                            <div class="alert alert-danger" hidden>Name Must not Contain Number</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email*</label>
+                            <input type="email" class="form-control" id="email" name="Email" aria-describedby="emailHelp" placeholder="YourEmail@gmail.com" required />
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Number</label>
+                            <input type="text" class="form-control" id="number" name="Phone Number" placeholder="Phone Number" pattern="^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$" />
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject*</label>
+                            <input type="text" class="form-control" id="subject" name="Subject" placeholder="Subject" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">Comment*</label>
+                            <textarea class="form-control" name="Message" id="comment" required>
+                            </textarea>
+                        </div>
+                        <button type="submit" disabled id="submit" class="btn btn-primary">
+                            Submit
+                          </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer font-small blue darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 py-5">
+                    <div class="mb-5 flex-center">
+                        <a class="fb-ic" href="https://www.facebook.com/" target="_blank">
+                            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="tw-ic" href="https://www.twitter.com/" target="_blank">
+                            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="gplus-ic" href="https://mail.google.com/" target="_blank">
+                            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="li-ic" href="https://www.linkedin.com/" target="_blank">
+                            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="ins-ic" href="https://www.instagram.com/" target="_blank">
+                            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <a class="ins-ic" href="https://www.youtube.com/" target="_blank">
+                            <i class="fab fa-youtube fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3">© Russlle de Explorer 2020
+            <a href="https://mdbootstrap.com/"> ALL RIGHT RESERVED</a>
+        </div>
+    </footer>
+    <script data-cfasync="false" type="text/javascript" src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
+</body>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var Name = $('#name').val()
+        var PNumber = $('#number').val()
+        var Subject = $('#subject').val()
+        var Message = $('#comment').val()
+        var Email = $('#email').val()
+        $('#name').keypress(function(e) {
+            var regex = new RegExp("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                $('.alert').prop('hidden', true)
+                $('#submit').prop('disabled', false)
+                return true;
+            } else {
+                $('.alert').prop('hidden', false)
+                $('#submit').prop('disabled', true)
+                return false;
+            }
+        });
+
+        $('#submit').on('click', function() {
+            $.ajax({
+                url: 'https://script.google.com/a/student.passerellesnumeriques.org/macros/s/AKfycby_mBZIotYAy4JJQvEW3SWcTTMWeHNVw6ahQhcOIA/exec',
+                type: 'POST',
+                Datatype: 'JSON',
+                success: function(res) {
+                    alert("success")
+                }
+            })
+        })
+
+
+
+    })
+</script>
+
+</html>
